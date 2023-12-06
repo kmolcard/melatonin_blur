@@ -88,6 +88,8 @@ namespace melatonin::blur
 
     static void argb (juce::Image& srcImage, juce::Image& dstImage, size_t radius)
     {
+      juce::ignoreUnused (srcImage);
+
 #if MELATONIN_BLUR_VIMAGE_MACOS14
         if (internal::vImageARGBAvailable())
             melatonin::blur::vImageARGB (srcImage, dstImage, radius);

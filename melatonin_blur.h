@@ -16,7 +16,18 @@ END_JUCE_MODULE_DECLARATION
 */
 
 #include "juce_graphics/juce_graphics.h"
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wsign-conversion"
+#pragma GCC diagnostic ignored "-Wsign-compare"
+#pragma GCC diagnostic ignored "-Wshorten-64-to-32"
+#pragma GCC diagnostic ignored "-Wunused-function"
+
 #include "melatonin/cached_blur.h"
+
+#pragma GCC diagnostic pop
+
+
 #include "melatonin/shadows.h"
 #include "melatonin/blur_demo_component.h"
 
