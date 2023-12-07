@@ -14,9 +14,10 @@
         #define MELATONIN_BLUR_VIMAGE 1
         #define MELATONIN_BLUR_VIMAGE_MACOS14 1
         #include "../implementations/vImage_macOS14.h"
-    #elif (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= 110000)
-    // *Compiling* has to happen on macOS > 11.0 to support vImageSepConvolve_Planar8
-    // Once compiled, we will check at runtime before relying on the vImage function
+    #elif (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= 110000) \
+           || (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 140000)
+    // *Compiling* has to happen on macOS > 11.0 and iOS > 14.0 to support vImageSepConvolve_Planar8
+    // Once compiled, we will will check at runtime before relying on the vImage function
         #define MELATONIN_BLUR_VIMAGE 1
         #include "../implementations/vImage.h" // Single channel
     #else
