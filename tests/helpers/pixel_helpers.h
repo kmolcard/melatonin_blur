@@ -180,9 +180,9 @@ static bool isImageFilled (const juce::Image& img, const juce::Colour& color)
 
             // TODO: again, windows compositing seems to need some leeway
             // Here, the alpha channel on the far right is 253 instead of 255
-            if (pixelColor.getFloatRed() !=  color.getFloatRed()
-                || pixelColor.getFloatGreen() != color.getFloatGreen()
-                || pixelColor.getFloatBlue() != color.getFloatBlue()
+            if (juce::exactlyEqual(pixelColor.getFloatRed(), color.getFloatRed())
+                || juce::approximatelyEqual(pixelColor.getFloatGreen(), color.getFloatGreen())
+                || juce::approximatelyEqual(pixelColor.getFloatBlue(), color.getFloatBlue())
                 || std::abs(pixelColor.getFloatAlpha() - color.getFloatAlpha()) > 0.01f)
                 return false;
         }
